@@ -3,3 +3,6 @@ credentials.json
 
 # Ignore -env directory
 env/
+
+*.xlsx
+*.csv

@@ -24,10 +24,14 @@ data_filtered = [row[:19] for row in data]
 headers = data_filtered[0]  # Header baris pertama
 data_filtered = data_filtered[1:]  # Data tanpa header
 
-# Konversi nilai di kolom D dan E menjadi string (index 3 dan 4)
+# Cari indeks kolom untuk NIK dan NKK
+index_nik = headers.index("NIK")
+index_nkk = headers.index("NKK")
+
+# Konversi nilai di kolom NIK dan NKK menjadi string
 for row in data_filtered:
-    row[3] = str(row[3])  # Kolom D
-    row[4] = str(row[4])  # Kolom E
+    row[index_nik] = str(row[index_nik])  # Kolom NIK
+    row[index_nkk] = str(row[index_nkk])  # Kolom NKK
 
 # Convert data to DataFrame
 df = pd.DataFrame(data_filtered, columns=headers)
@@ -35,4 +39,4 @@ df = pd.DataFrame(data_filtered, columns=headers)
 # Simpan DataFrame ke file Excel
 df.to_excel("manual_output.xlsx", index=False, engine='openpyxl')
 
-print("Data berhasil disimpan ke output.xlsx")
+print("Data berhasil disimpan ke manual_output.xlsx")
